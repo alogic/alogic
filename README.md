@@ -87,4 +87,4 @@ time.
 * [Documentation](doc/index.md)
 * [License](LICENSE)
 * [Installation](doc/install.md)
-* [Online compiler playground](https://alogic-playground.argondesign.com)
+* [Online compiler playground](https://alogic.app)

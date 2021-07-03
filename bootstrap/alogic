@@ -30,7 +30,7 @@ info () {
   stderr "INFO: $1"
 }
 
-REMOTE="https://github.com/ArgonDesign/alogic.git"
+REMOTE="https://github.com/alogic/alogic.git"
 
 # Ensure we have the given version.
 # If there is no argument, use $DEFAULT_VERSION.

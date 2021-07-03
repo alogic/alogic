@@ -297,12 +297,12 @@ gcfDeploy := {
 
   Seq(
     "gcloud",
-    "--project=ccx-eng-cam",
+    "--project=alogic-playground",
     "functions",
     "deploy",
-    "alogic-playground",
-    "--region=us-central1",
-    "--service-account=alogic-playground@ccx-eng-cam.iam.gserviceaccount.com",
+    "compile",
+    "--region=europe-west1",
+    "--service-account=playground@alogic-playground.iam.gserviceaccount.com",
     "--entry-point=com.argondesign.alogic.gcp.FunctionCompile",
     "--runtime=java11",
     "--memory=512MB",
