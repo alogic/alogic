@@ -80,9 +80,9 @@ libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.9" % Test
 
 libraryDependencies += "org.mockito" % "mockito-core" % "3.7.7" % Test
 
-logBuffered in Test := false
+Test / logBuffered := false
 
-testOptions in Test += Tests.Argument("-oD") // Add F for full stack traces
+Test / testOptions += Tests.Argument("-oD") // Add F for full stack traces
 
 ////////////////////////////////////////////////////////////////////////////////
 // Target aliases
@@ -109,25 +109,23 @@ addCommandAlias(
 
 enablePlugins(Antlr4Plugin)
 
-antlr4Version in Antlr4 := "4.9.0"
+Antlr4 / antlr4Version := "4.9.0"
 
-antlr4Dependency in Antlr4 := "com.tunnelvisionlabs" % "antlr4" % (Antlr4 / antlr4Version).value
+Antlr4 / antlr4Dependency := "com.tunnelvisionlabs" % "antlr4" % (Antlr4 / antlr4Version).value
 
-antlr4RuntimeDependency in Antlr4 := "com.tunnelvisionlabs" % "antlr4-runtime" % (Antlr4 / antlr4Version).value
+Antlr4 / antlr4RuntimeDependency := "com.tunnelvisionlabs" % "antlr4-runtime" % (Antlr4 / antlr4Version).value
 
-antlr4PackageName in Antlr4 := Some("com.argondesign.alogic.antlr")
+Antlr4 / antlr4PackageName := Some("com.argondesign.alogic.antlr")
 
-antlr4GenListener in Antlr4 := false
+Antlr4 / antlr4GenListener := false
 
-antlr4GenVisitor in Antlr4 := true
+Antlr4 / antlr4GenVisitor := true
 
 ////////////////////////////////////////////////////////////////////////////////
 // SBT native packager
 ////////////////////////////////////////////////////////////////////////////////
 
 enablePlugins(JavaAppPackaging)
-
-// stage := (stage dependsOn (test in Test)).value
 
 bashScriptExtraDefines +=
   """
@@ -258,10 +256,10 @@ coverageReport := (coverageReport dependsOn coverageUpdateIgnored).value
 ////////////////////////////////////////////////////////////////////////////////
 
 // Do not run tests when running assembly
-test in assembly := {}
+assembly / test := {}
 
 // Put output in it's own directory as needed by GCP
-assemblyOutputPath in assembly := crossTarget.value / "assembly" / (assemblyJarName in assembly).value
+assembly / assemblyOutputPath := crossTarget.value / "assembly" / (assembly / assemblyJarName).value
 
 ////////////////////////////////////////////////////////////////////////////////
 // Google Cloud Functions
