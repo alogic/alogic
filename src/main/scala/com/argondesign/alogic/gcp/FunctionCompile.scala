@@ -42,7 +42,6 @@ import scala.jdk.CollectionConverters._
 import scala.jdk.OptionConverters._
 import scala.util.chaining.scalaUtilChainingOps
 
-@nowarn("cat=lint-byname-implicit") // Scala 2.13.4 is overzealous
 class FunctionCompile extends HttpFunction {
 
   // API version reported to client
