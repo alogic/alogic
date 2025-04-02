@@ -16,7 +16,7 @@ organization := "com.argondesign"
 // Scala compiler
 ////////////////////////////////////////////////////////////////////////////////
 
-scalaVersion := "2.13.6"
+scalaVersion := "2.13.11"
 
 crossScalaVersions := Seq(scalaVersion.value, "3.0.0")
 
@@ -291,16 +291,15 @@ gcfDeploy := {
   Seq(
     "gcloud",
     "--project=alogic-playground",
-    "functions",
+    "run",
     "deploy",
-    "compile",
+    "playground-compile",
     "--region=europe-west1",
     "--service-account=playground@alogic-playground.iam.gserviceaccount.com",
-    "--entry-point=com.argondesign.alogic.gcp.FunctionCompile",
-    "--runtime=java11",
-    "--memory=512MB",
+    "--function=com.argondesign.alogic.gcp.FunctionCompile",
+    "--base-image=java21",
+    "--memory=512Mi",
     "--timeout=80s",
-    "--trigger-http",
     "--allow-unauthenticated",
     s"--source=${assembly.value.getParent}"
   ) ! ProcessLogger { s: String => log.info(s) } ensuring { _ == 0 }
